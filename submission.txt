@@ -1,0 +1,56 @@
+1. Top complaints:
+
+SELECT complaint_type, count(*) as num_complaints
+FROM calls_kritikaverma
+GROUP BY complaint_type
+ORDER BY num_complaints DESC
+LIMIT 10;
+
+This code will give you the top 10 most common complaints based on the number of times they appear in the dataset.
+
+2. Geographic distribution:
+
+SELECT borough, count(*) as num_complaints
+FROM calls_kritikaverma
+GROUP BY borough;
+
+This code will give you the number of complaints for each borough in the dataset, allowing you to identify areas with higher levels of need.
+
+3.  Time of day and day of week:
+
+SELECT HOUR(created_date) as hour_of_day, DAYOFWEEK(created_date) as day_of_week, count(*) as num_complaints
+FROM calls_kritikaverma
+GROUP BY hour_of_day, day_of_week;
+
+This code will give you the number of complaints for each hour of the day and day of the week, allowing you to allocate resources and staff more effectively.
+
+4. Response times:
+
+SELECT complaint_type, AVG(DATEDIFF(closed_date, created_date)) as avg_response_time
+FROM calls_kritikaverma
+GROUP BY complaint_type
+ORDER BY avg_response_time;
+
+This code will give you the average response time for each complaint type in the dataset, allowing you to identify areas where response times need to be improved.
+
+5. Trends over time:
+
+SELECT YEAR(created_date) as year, complaint_type, count(*) as count
+FROM calls_kritikaverma
+GROUP BY YEAR(created_date), complaint_type
+ORDER BY YEAR(created_date), count(*) DESC;
+
+This code will group the complaints by year and type and count the number of complaints in each group, allowing the city to see which types of complaints are trending over time.
+
+6. Demographic analysis:
+
+SELECT complaint_type, COUNT(*) as count, AVG(case when gender = 'FEMALE' then 1 else 0 end) as female_percentage,
+AVG(case when gender = 'MALE' then 1 else 0 end) as male_percentage,
+AVG(case when race = 'WHITE' then 1 else 0 end) as white_percentage,
+AVG(case when race = 'BLACK' then 1 else 0 end) as black_percentage,
+AVG(case when race = 'HISPANIC' then 1 else 0 end) as hispanic_percentage
+FROM calls_kritikaverma
+GROUP BY complaint_type
+ORDER BY count DESC;
+
+This code will group the complaints by type and count the number of complaints in each group, while also calculating the average percentage of complaints made by females, males, and people of different races. This will allow the city to see if there are any disparities in service requests based on demographics.
