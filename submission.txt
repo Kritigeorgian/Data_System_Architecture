@@ -38,7 +38,8 @@ This code will give you the average response time for each complaint type in the
 SELECT YEAR(created_date) as year, complaint_type, count(*) as count
 FROM calls_kritikaverma
 GROUP BY YEAR(created_date), complaint_type
-ORDER BY YEAR(created_date), count(*) DESC;
+ORDER BY YEAR(created_date), count DESC;
+
 
 This code will group the complaints by year and type and count the number of complaints in each group, allowing the city to see which types of complaints are trending over time.
 
