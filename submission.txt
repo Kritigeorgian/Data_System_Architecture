@@ -45,13 +45,12 @@ This code will group the complaints by year and type and count the number of com
 
 6. Demographic analysis:
 
-SELECT complaint_type, COUNT(*) as count, AVG(case when gender = 'FEMALE' then 1 else 0 end) as female_percentage,
-AVG(case when gender = 'MALE' then 1 else 0 end) as male_percentage,
-AVG(case when race = 'WHITE' then 1 else 0 end) as white_percentage,
-AVG(case when race = 'BLACK' then 1 else 0 end) as black_percentage,
-AVG(case when race = 'HISPANIC' then 1 else 0 end) as hispanic_percentage
+USE 311_calls;
+SELECT city, COUNT(*) as num_complaints
 FROM calls_kritikaverma
-GROUP BY complaint_type
-ORDER BY count DESC;
+GROUP BY city
+ORDER BY num_complaints DESC
+LIMIT 10;
+
 
 This code will group the complaints by type and count the number of complaints in each group, while also calculating the average percentage of complaints made by females, males, and people of different races. This will allow the city to see if there are any disparities in service requests based on demographics.
