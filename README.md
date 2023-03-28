@@ -1,5 +1,2 @@
 # Midterm
-
-I am using google cloud console and even after using the best trial version resource they have. their machine is not able to process such huge data 
-
-The code works very fine but its the system that is not able to fetch the data
+I WAS NOT ABLE TO UPLOAD THIS ON BLACK BOARD THATS WHY I USED THIS PLATFORM . SORRY 
